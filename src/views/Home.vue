@@ -10,6 +10,12 @@
         </div>
       </div>
     </div>
+    <div class="updates">
+      <div class="container">
+        <h2>Never miss a post. Register now!</h2>
+        <router-link class="router-button" to="#">Register for VBlog</router-link>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -56,5 +62,43 @@ export default {
     font-weight: 300;
     font-size: 28px;
     margin-bottom: 32px;
+  }
+
+  .updates .container{
+    padding: 100px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+  }
+
+  .router-button{
+    display: flex;
+    font-size: 14px;
+    text-decoration: none;
+  }
+
+  h2{
+    font-weight: 300;
+    font-size: 32px;
+    max-width: 425px;
+    width: 100%;
+    text-align: center;
+    text-transform: uppercase;
+    
+  }
+
+  @media (min-width: 800px){
+    .updates .container{
+      padding: 125px 25px;
+      flex-direction: row;
+    }
+    .router-button{
+      margin-left: auto;
+  }
+    h2{
+      text-align: initial;
+      font-size: 40px;
+    }
   }
 </style>
