@@ -1,13 +1,11 @@
 <template>
     <div class="blog-card">
-        <div class="icons">
+        <div v-show="editPost" class="icons">
             <div class="icon">
                 <font-awesome-icon class="edit" icon="edit" />
-
             </div>
             <div class="icon">
                 <font-awesome-icon class="delete" icon="trash" />
-
             </div>
         </div>
         <img :src="require(`../assets/blogCards/${post.blogCoverPhoto}.jpeg`)" alt="">
@@ -25,7 +23,12 @@
 export default {
     name:"BlogCard",
     props:["post"],
-    components:{}
+    components:{},
+    computed:{
+        editPost(){
+            return this.$store.state.editPost;
+        }
+    }
 }
 </script>
 
