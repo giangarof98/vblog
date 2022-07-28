@@ -9,6 +9,14 @@ export default createStore({
       {BlogTitle: 'Card 1', blogCoverPhoto: '23', BlogDate: 'May 1, 2021'},
     ],
     editPost: null,
+    user: null,
+    profileEmail:null,
+    profileFirstName: null,
+    profileLastName: null,
+    profileUserName:null,
+    profileId: null,
+    profileInitials: null,
+
   },
   mutations: {
     toggleEditPost(state, payload){
