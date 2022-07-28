@@ -13,9 +13,10 @@
                 <div class="input">
                     <input type="password" placeholder="Password" v-model="password">
                 </div>
+                <div v-show="error" class="error">{{this.errorMsg}}</div>
             </div>
             <router-link class="forgot-password" :to="{name:'ForgotPassword'}">Forgot Password?</router-link>
-            <button>Sign In</button>
+            <button @click.prevent="signIn">Sign In</button>
             <div class="angle"></div>
         </form>
         <div class="background"></div>
@@ -24,12 +25,34 @@
 
 <script>
 
+import firebase from 'firebase/compat/app';
+import 'firebase/compat/auth';
+import db from '../firebase/firebaseinit';
+
 export default {
     name:'Login',
     data(){
         return {
             email: null,
-            password:null
+            password:null,
+            error: '',
+            errorMsg: '',
+        }
+    },
+    methods:{
+        signIn(){
+            firebase
+            .auth()
+            .signInWithEmailAndPassword(this.email,this.password)
+            .then(() => {
+                this.$router.push({name:"Home"});
+                this.error = false;
+                this.errorMsg = "";
+                console.log(firebase.auth().currentUser.uid)
+            }).catch(err => {
+                this.error = true;
+                this.errorMsg = err.message
+            })
         }
     }
 }
