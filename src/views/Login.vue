@@ -3,7 +3,7 @@
         <form class="login">
             <p class="login-register">
                 Don't have an account?
-                <router-link class="router-link" :to="{name: 'Register'}"></router-link>
+                <router-link class="router-link" :to="{name: 'Register'}">Register</router-link>
             </p>
             <h2>Login to VBlog</h2>
             <div class="inputs">
