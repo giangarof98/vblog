@@ -9,9 +9,9 @@
                     <router-link class="link" :to="{name:'Home'}">Home</router-link>
                     <router-link class="link" :to="{name:'Blogs'}">Blogs</router-link>
                     <router-link class="link" to="#">Create A Post</router-link>
-                    <router-link class="link" :to="{name:'Login'}">Login/Register</router-link>
+                    <router-link v-if="!user" class="link" :to="{name:'Login'}">Login/Register</router-link>
                 </ul>
-                <div class="profile" ref="profile" @click.prevent="toggleProfileMenu">
+                <div v-if="user" class="profile" ref="profile" @click.prevent="toggleProfileMenu">
                     <span>{{this.$store.state.profileInitials}}</span>
                     <div v-show="profileMenu" class="profile-menu">
                         <div class="info">
@@ -49,7 +49,7 @@
                 <router-link class="link" :to="{name:'Home'}">Home</router-link>
                 <router-link class="link" :to="{name:'Blogs'}">Blogs</router-link>
                 <router-link class="link" to="#">Create A Post</router-link>
-                <router-link class="link" :to="{name:'Login'}">Login/Register</router-link>
+                <router-link v-if="!user" class="link" :to="{name:'Login'}">Login/Register</router-link>
             </ul>
         </transition>
     </header>
@@ -100,6 +100,11 @@ export default {
             this.mobileNav = !this.mobileNav;
         }
     },
+    computed: {
+        user(){
+            return this.$store.state.user;
+        }
+    }
 }
 </script>
 

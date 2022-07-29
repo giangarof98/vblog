@@ -1,5 +1,5 @@
 <template>
-    <div class="blog-wrapper no-user">
+    <div class="blog-wrapper" :class="{'no-user': !user}">
         <div class="blog-content">
             <h2 v-if="post.welcomeScreen">{{post.title}}</h2>
             <h2 v-else>{{post.title}}</h2>
@@ -23,10 +23,19 @@
 export default {
     name: "blogPost",
     props: ["post"],
+    computed:{
+        user(){
+            return this.$store.state.user;
+        }
+    }
 }
 </script>
 
 <style scoped>
+
+.no-user:first-child .blog-content h2{
+    color: #fff;
+}
 
     .no-user:first-child .blog-content{
         background-color: #303030;
@@ -58,6 +67,7 @@ export default {
         font-weight: 300;
         text-transform: uppercase;
         margin-bottom: 24px;
+        
     }
 
     p{
