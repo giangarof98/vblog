@@ -5,7 +5,7 @@
             <div class="left">
                 <div class="col-1">
                     <router-link class="header" :to="{name:'Home'}">FireBlogs</router-link>
-                        <ul>
+                        <!-- <ul>
                             <li>
                             <a href="#"><font-awesome-icon icon="" class="svg-icon"/></a>
                             </li>
@@ -18,13 +18,13 @@
                             <li>
                             <a href="#"><font-awesome-icon icon="" class="svg-icon"/></a>
                             </li>
-                        </ul>
+                        </ul> -->
                 </div>
                 <div class="col-2">
                     <ul>
                         <router-link class="link" :to="{name:'Home'}">Home</router-link>
                         <router-link class="link" :to="{name:'Blogs'}">Blogs</router-link>
-                        <router-link v-if="admin" class="link" to="#">Create Post</router-link>
+                        <router-link v-if="admin" class="link" :to="{name:'Admin'}">Create Post</router-link>
                         <router-link v-if="!user" class="link" :to="{name:'Login'}">Login In / Register</router-link>
                     </ul>
                 </div>
