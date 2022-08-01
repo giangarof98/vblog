@@ -41,20 +41,46 @@ export default {
         return {
             modalMessage: 'Changes were saved!',
             modalActive: null,
-            firstName:'',
-            lastName:'',
-            username:'',
-            email:'',
-
-
         }
     },
     methods:{
-
+        updateProfile(){
+            this.$store.dispatch('updateUserSettings');
+            this.modalActive = !this.modalActive
+        },
+        closeModal(){
+            this.modalActive = !this.modalActive
+        },
     },
     computed:{
-        
-    }
+        firstName:{
+            get(){
+                return this.$store.state.profileFirstName;
+            },
+            set(payload){
+                this.$store.commit('changeFirstName', payload);
+            }
+        },
+        lastName:{
+            get(){
+                return this.$store.state.profileLastName;
+            },
+            set(payload){
+                this.$store.commit('changLastName', payload);
+            }
+        },
+        username:{
+            get(){
+                return this.$store.state.profileUserName;
+            },
+            set(payload){
+                this.$store.commit('changeUserName', payload);
+            }
+        },
+        email(){
+            return this.$store.state.profileEmail;
+        }
+    },
 }
 </script>
 
