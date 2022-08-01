@@ -24,12 +24,12 @@
                         </div>
                         <div class="options">
                             <div class="option">
-                                <router-link class="option" to="#">
+                                <router-link class="option" :to="{name:'Profile'}">
                                     <p>Profile</p>
                                 </router-link>
                             </div>
                             <div class="option">
-                                <router-link class="option" to="#">
+                                <router-link class="option" :to="{name:'Admin'}">
                                     <p>Admin</p>
                                 </router-link>
                             </div>
@@ -108,17 +108,17 @@ export default {
 }
 </script>
 
-<style >
-
-img{
-    height: 30px;
-}
+<style scoped>
 
 header{
     padding: 0 25px;
     box-shadow: 0 4px 6px -1px;
     z-index: 99;
 }
+img{
+    height: 30px;
+}
+
 
 .link{
     font-weight: 500;
