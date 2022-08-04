@@ -27,11 +27,11 @@ export default {
         }
     },
     methods:{
-        async addAdmin(){
-            const addAdmin = await firebase.functions().httpsCallable('AddAdminRole');
-            const result = await addAdmin({email: this.adminEmail})
-            this.functionMsg = result.data.message;
-        }
+        // async addAdmin(){
+        //     const addAdmin = await firebase.functions().httpsCallable('AddAdminRole');
+        //     const result = await addAdmin({email: this.adminEmail})
+        //     this.functionMsg = result.data.message;
+        // }
     },
     
 }

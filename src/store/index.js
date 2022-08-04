@@ -12,6 +12,12 @@ export default createStore({
       {BlogTitle: 'Card 1', blogCoverPhoto: '22', BlogDate: 'May 1, 2021'},
       {BlogTitle: 'Card 1', blogCoverPhoto: '23', BlogDate: 'May 1, 2021'},
     ],
+    blogHTML: 'Write your blog here',
+    BlogTitle: '',
+    blogPhotoName: '',
+    blogPhotoFileUrl: null,
+    blogPhotoPreview: null,
+
     editPost: null,
     user: null,
     profileAdmin: null,
