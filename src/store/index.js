@@ -14,6 +14,7 @@ export default createStore({
     ],
     editPost: null,
     user: null,
+    profileAdmin: null,
     profileEmail:null,
     profileFirstName: null,
     profileLastName: null,
@@ -29,6 +30,10 @@ export default createStore({
     },
     updateUser(state, payload){
       state.user = payload;
+    },
+    setProfileAdmin(state, payload){
+      state.profileAdmin = payload;
+      console.log(state.profileAdmin)
     },
     setProfileInfo(state, doc){
       state.profileId = doc.id;
@@ -53,11 +58,14 @@ export default createStore({
     },
   },
   actions: {
-    async getCurrentUser({commit}){
+    async getCurrentUser({commit}, user){
       const dataBase = await db.collection('users').doc(firebase.auth().currentUser.uid)
       const dbResults = await dataBase.get();
       commit("setProfileInfo", dbResults);
       commit('setProfileInitials');
+      const token = await user.getIdTokenResult();
+      const admin = await token.claims.admin;
+      commit('setProfileAdmin', admin)
       console.log(dbResults)
     },
     async updateUserSettings({commit, state}){
