@@ -30,6 +30,18 @@ export default createStore({
 
   },
   mutations: {
+    newBlogPost(state, payload){
+      state.blogHTML = payload;
+    },
+    updateBlogTitle(state, payload){
+      state.BlogTitle = payload;
+    },
+    fileNameChange(state, payload){
+      state.blogPhotoName = payload;
+    },
+    createFileUrl(state, payload){
+      state.blogPhotoFileUrl = payload
+    },
     toggleEditPost(state, payload){
       state.editPost = payload;
       console.log(state.editPost)
