@@ -2,6 +2,7 @@ import { createStore } from 'vuex';
 
 import firebase from 'firebase/compat/app';
 import 'firebase/compat/auth';
+import 'firebase/compat/storage';
 import db from '../firebase/firebaseinit';
 
 export default createStore({
@@ -13,7 +14,7 @@ export default createStore({
       {BlogTitle: 'Card 1', blogCoverPhoto: '23', BlogDate: 'May 1, 2021'},
     ],
     blogHTML: 'Write your blog here',
-    BlogTitle: '',
+    blogTitle: '',
     blogPhotoName: '',
     blogPhotoFileUrl: null,
     blogPhotoPreview: null,
@@ -34,7 +35,7 @@ export default createStore({
       state.blogHTML = payload;
     },
     updateBlogTitle(state, payload){
-      state.BlogTitle = payload;
+      state.blogTitle = payload;
     },
     fileNameChange(state, payload){
       state.blogPhotoName = payload;

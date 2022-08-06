@@ -5,6 +5,7 @@
                 <router-link class="header" :to="{name:'Home'}">VueBlog</router-link>
             </div>
             <div class="nav-links">
+                <!--  -->
                 <ul v-show="!mobile">
                     <router-link class="link" :to="{name:'Home'}">Home</router-link>
                     <router-link class="link" :to="{name:'Blogs'}">Blogs</router-link>
