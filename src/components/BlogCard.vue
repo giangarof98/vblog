@@ -8,11 +8,11 @@
                 <font-awesome-icon class="delete" icon="trash" />
             </div>
         </div>
-        <img :src="require(`../assets/blogCards/${post.blogCoverPhoto}.jpeg`)" alt="">
+        <img :src="post.blogCoverPhoto" alt="">
         <div class="info">
             <h4>{{post.BlogTitle}}</h4>
-            <h6>{{post.BlogDate}}</h6>
-            <router-link class="link" to="#">
+            <h6>{{new Date(post.blogDate).toLocaleString("en-us", {dateStyle:"long"}) }}</h6>
+            <router-link class="link" :to="{name: 'ViewBlog', params:{blogid: this.post.blogID}}">
                 View the post >
             </router-link>
         </div>

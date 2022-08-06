@@ -1,6 +1,6 @@
 <template>
   <div class="app-wrapper">
-    <div class="app">
+    <div class="app" v-if="this.$store.state.postLoaded">
       <Navigation v-if="!navigation"/>
       <router-view />
       <Footer v-if="!navigation"/>
@@ -32,11 +32,12 @@ export default {
         // const token = await user.getIdTokenResult();
         // console.log(token.claims)
         this.$store.dispatch('getCurrentUser', user);
-        console.log(this.$store.state.profileEmail);
+        //console.log(this.$store.state.profileEmail);
       }
     });
     this.checkRoute();
-    console.log(firebase.auth().currentUser)
+    this.$store.dispatch('getPost')
+    //console.log(firebase.auth().currentUser)
 
   },
   mounted() {},

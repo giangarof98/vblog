@@ -7,12 +7,8 @@ import db from '../firebase/firebaseinit';
 
 export default createStore({
   state: {
-    sampleBlogCards: [
-      {BlogTitle: 'Card 1', blogCoverPhoto: '20', BlogDate: 'May 1, 2021'},
-      {BlogTitle: 'Card 1', blogCoverPhoto: '21', BlogDate: 'May 1, 2021'},
-      {BlogTitle: 'Card 1', blogCoverPhoto: '22', BlogDate: 'May 1, 2021'},
-      {BlogTitle: 'Card 1', blogCoverPhoto: '23', BlogDate: 'May 1, 2021'},
-    ],
+    blogPosts: [],
+    postLoaded: null,
     blogHTML: 'Write your blog here',
     blogTitle: '',
     blogPhotoName: '',
@@ -29,6 +25,14 @@ export default createStore({
     profileId: null,
     profileInitials: null,
 
+  },
+  getters:{
+    blogPostFeed(state){
+      return state.blogPosts.slice(0,2)
+    },
+    blogPostCards(state){
+      return state.blogPosts.slice(2,6)
+    },
   },
   mutations: {
     newBlogPost(state, payload){
@@ -89,6 +93,23 @@ export default createStore({
       const admin = await token.claims.admin;
       commit('setProfileAdmin', admin)
       console.log(dbResults)
+    },
+    async getPost({state}) {
+      const dataBase = await db.collection('blogPosts').orderBy('date', 'desc');
+      const dbResults = await dataBase.get();
+      dbResults.forEach((doc) => {
+        if(!state.blogPosts.some((post) => post.blogID === doc.id)){
+          const data = {
+            blogID: doc.data().blogID,
+            blogHTML: doc.data().blogHTML,
+            blogCoverPhoto: doc.data().blogCoverPhoto,
+            blogTitle: doc.data().blogTitle,
+            blogDate: doc.data().date,
+          };
+          state.blogPosts.push(data);
+        }
+      });
+      state.postLoaded = true;
     },
     async updateUserSettings({commit, state}){
       const dataBase = await db.collection('users').doc(state.profileId);
