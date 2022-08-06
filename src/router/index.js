@@ -10,6 +10,7 @@ import Profile from '../views/Profile.vue';
 import Admin from '../views/Admin.vue';
 import CreatePost from '../views/CreatePost.vue';
 import BlogPreview from '../views/BlogPreview.vue';
+import ViewBlog from '../views/ViewBlog.vue';
 
 const routes = [
   {
@@ -82,6 +83,14 @@ const routes = [
     component: BlogPreview,
     meta:{
       title: 'Blog Preview'
+    }
+  },
+  {
+    path: '/view-blog',
+    name: 'ViewBlog',
+    component: ViewBlog,
+    meta:{
+      title: 'View Blog'
     }
   },
 ];
