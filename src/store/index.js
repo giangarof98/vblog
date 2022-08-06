@@ -42,6 +42,9 @@ export default createStore({
     createFileUrl(state, payload){
       state.blogPhotoFileUrl = payload
     },
+    openPhotoPreview(state){
+      state.blogPhotoPreview = !state.blogPhotoPreview;
+    },
     toggleEditPost(state, payload){
       state.editPost = payload;
       console.log(state.editPost)
