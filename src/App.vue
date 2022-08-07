@@ -26,7 +26,7 @@ export default {
     };
   },
   created() {
-    firebase.auth().onAuthStateChanged((user) => {
+    firebase.auth().onAuthStateChanged(async (user) => {
       this.$store.commit("updateUser", user);
       if(user){
         // const token = await user.getIdTokenResult();

@@ -26,13 +26,13 @@ export default {
             functionMsg: null,
         }
     },
-    methods:{
-        // async addAdmin(){
-        //     const addAdmin = await firebase.functions().httpsCallable('AddAdminRole');
-        //     const result = await addAdmin({email: this.adminEmail})
-        //     this.functionMsg = result.data.message;
-        // }
-    },
+    // methods:{
+    //     async addAdmin(){
+    //         const addAdmin = await firebase.functions().httpsCallable('AddAdminRole');
+    //         const result = await addAdmin({email: this.adminEmail})
+    //         this.functionMsg = result.data.message;
+    //     }
+    // },
     
 }
 </script>

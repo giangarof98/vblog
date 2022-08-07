@@ -1,6 +1,6 @@
 <template>
     <div class="blog-card">
-        <div v-show="editPost" class="icons">
+        <div v-if="editPost" class="icons">
             <div class="icon" @click="editBlog">
                 <font-awesome-icon class="edit" icon="edit" />
             </div>
@@ -10,7 +10,7 @@
         </div>
         <img :src="post.blogCoverPhoto" alt="">
         <div class="info">
-            <h4>{{post.BlogTitle}}</h4>
+            <h4>{{post.blogTitle}}</h4>
             <h6>{{new Date(post.blogDate).toLocaleString("en-us", {dateStyle:"long"}) }}</h6>
             <router-link class="link" :to="{name: 'ViewBlog', params:{blogid: this.post.blogID}}">
                 View the post >
@@ -27,7 +27,13 @@ export default {
     computed:{
         editPost(){
             return this.$store.state.editPost;
-        }
+        },
+        user(){
+            return this.$store.state.user;
+        },
+        blogPosts(){
+            return this.$store.state.blogPosts;
+        },
     },
     methods:{
         deletePost(){
