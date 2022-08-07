@@ -1,10 +1,10 @@
 <template>
     <div class="blog-card">
         <div v-show="editPost" class="icons">
-            <div class="icon">
+            <div class="icon" @click="editBlog">
                 <font-awesome-icon class="edit" icon="edit" />
             </div>
-            <div class="icon">
+            <div class="icon" @click="deletePost">
                 <font-awesome-icon class="delete" icon="trash" />
             </div>
         </div>
@@ -27,6 +27,14 @@ export default {
     computed:{
         editPost(){
             return this.$store.state.editPost;
+        }
+    },
+    methods:{
+        deletePost(){
+            this.$store.dispatch('deletePost', this.post.blogID);
+        },
+        editBlog(){
+            this.$router.push({name:'EditBlog', params: {blogid: this.post.blogID} });
         }
     }
 }
